@@ -1,0 +1,41 @@
+<stmt> ::=   if <bExpr> then <bExpr> else <bExpr> fi
+           | let <ID> := <bExpr> in <bExpr> end 
+           | <bExpr>
+
+<bExpr> ::=   <bTerm> IMPLIES <bExpr>
+            | <bTerm>
+
+<bTerm> ::= <bNt> <bTerm'>
+
+<bTerm'> ::=   AND <bNt> <bTerm'> 
+             | OR <bNt> <bTerm'>
+	     | XOR <bNt> <bTerm'>
+             | == <bNt> <bTerm'>
+             | ϵ
+
+<bNt> ::=  NOT <bNt>
+         | <expr>
+
+<expr> ::= <factor> <expr'>
+
+<expr'> ::=  > <factor> <expr'>
+           | < <factor> <expr'>
+           | ϵ
+
+<factor> ::= <term> <factor'>
+
+<factor'> ::=   + <term> <factor'>
+              | - <term> <factor'>
+              | ϵ
+
+<term> ::= <iden> <term'>
+
+<term'> ::=  * <iden> <term'>
+           | ϵ
+
+<iden> ::=  ~ <iden>
+           |<simple>
+
+<simple> ::= CONST | ID | NUM | ( <stmt> )
+
+           

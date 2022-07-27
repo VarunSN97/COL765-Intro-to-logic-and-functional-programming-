@@ -1,0 +1,28 @@
+
+<Expr> ::= let <E1> := <E2> in <E3>		{if E1.type==E2.type && E2.type== E3.type then Expr.type == E1.type else error}
+
+<Expr> ::= if <E1> then <E2> else <E3>		{if E1.type == Boolean then (if (E2.type == E3.type) then Expr.type = E2.type else error) else error} 
+
+
+<Expr> ::= <E1> AND <E2>			{if (E1.type == E2.type && E1.type =Boolean) then Expr.type = E1.type else error}
+          |<E1> OR <E2>
+	  |<E1> XOR <E2>
+
+<Expr> ::= <E1> + <E2>			{if (E1.type == E2.type && E1.type ==Int) then Expr.type = E1.type else error}
+          |<E1> - <E2>
+	  |<E1> * <E2>
+
+<Expr> ::= Int 				{Expr.type = Int}
+<Expr> ::= Boolean 			{Expr.type = Boolean}
+
+
+For Functions the variables inside the function body have to be bounded by Type Environment
+Environment is a dictionary with Key -> Variable
+				 Value -> Data Type
+
+Application
+Named Function 			{All three use type environment (Bounding is done within scope)}
+Anonymous Funtion 
+
+
+Environment is passed from top to bottom and types are passed from bottom to top of the tree.
